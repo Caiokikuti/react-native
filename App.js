@@ -9,6 +9,7 @@ import Home from './screens/Home'
 import RelatorioGer from './screens/RelatorioGer'
 import RelatorioServicos from './screens/RelatorioServicos'
 import RelatorioBalanco from './screens/RelatorioBalanco'
+
 export default class App extends Component{
   render() {
     return (

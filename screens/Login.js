@@ -4,23 +4,41 @@ import { Container, Header, Content, Button} from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
 export default class Login extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            email:'',
+            senha: ''
+        }
+    }
+
+    verifica=()=>{
+        const {email, senha} = this.state;
+        if (email==""){
+            alert('Preencha o campo de email adequadamente')
+        }
+        else if(senha==""){
+            alert("Preencha o campo de senhar por favor")
+        }else{
+            Actions.home();
+        }
+    }
     
     render(){
         return (
-            
             <View style={style.Login}>
                 <View>
                     <Text style={style.logoStyle}>iMaid</Text>
                 </View>
                 <View>
                     <TextInput style={style.textinputA} placeholder="Email" placeholderTextColor="#fff"
-                    underlineColorAndroid={'transparent'} />   
+                    underlineColorAndroid={'transparent'} onChangeText={email=>this.setState({email})}/>   
             
                     <TextInput style={style.textinputB} placeholder="Senha" placeholderTextColor="#fff"
-                    underlineColorAndroid={'transparent'} secureTextEntry={true} />
+                    underlineColorAndroid={'transparent'} secureTextEntry={true} onChangeText={senha=>this.setState({senha})} />
                     
                    
-                    <Button style={style.posicaoBotao} block success onPress={()=>Actions.home()}>
+                    <Button style={style.posicaoBotao} block success onPress={this.verifica}>
                         <Text style={style.txtBotao}>Entrar</Text>
                     </Button>
 
